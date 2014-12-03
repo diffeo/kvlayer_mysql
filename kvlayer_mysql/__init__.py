@@ -138,7 +138,7 @@ class MysqlTableStorage(AbstractStorage):
         #    return rp[:]
         if typ == uuid.UUID:
             return uuid.UUID(bytes=str(rp))
-        return rp
+        return str(rp)
 
     def _massage_result_tuple(self, key_spec, row):
         '''Change types in `row` from postgres return types.'''
