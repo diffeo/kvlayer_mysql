@@ -138,6 +138,12 @@ class MysqlTableStorage(AbstractStorage):
         #    return rp[:]
         if typ == uuid.UUID:
             return uuid.UUID(bytes=str(rp))
+        if typ == int:
+            return int(rp)
+        if typ == long:
+            return long(rp)
+        if typ == (int,long) or typ == (long,int):
+            return long(rp)
         return str(rp)
 
     def _massage_result_tuple(self, key_spec, row):
